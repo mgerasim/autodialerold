@@ -1,8 +1,8 @@
 # Change these
-server '193.124.93.198', roles: [:web, :app, :db], primary: true
+server '194.58.96.238', roles: [:web, :app, :db], primary: true
 
 #set :repo_url,        'git@example.com:username/appname.git'
-set  :repo_url,        'file:///home/deploy/repos/avtodailer.git'
+set  :repo_url,        'file:///home/deploy/repos/webapp.git'
 
 #set :scm, :none
 #set :repository, "."
@@ -16,8 +16,8 @@ set  :repo_url,        'file:///home/deploy/repos/avtodailer.git'
 #set :branch, "master"
 
 
-set :application,     'telecontact'
-set :user,            'deploy'
+set :application,     'webapp'
+set :user,            'rails'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
 
