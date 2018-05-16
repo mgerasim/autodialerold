@@ -1,8 +1,7 @@
 # Change these
-server '194.58.96.238', roles: [:web, :app, :db], primary: true
+server 'localhost', roles: [:web, :app, :db], primary: true
 
-#set :repo_url,        'git@example.com:username/appname.git'
-set  :repo_url,        'file:///home/deploy/repos/webapp.git'
+set  :repo_url,        'file:///home/rails/repos/webapp.git'
 
 #set :scm, :none
 #set :repository, "."
@@ -20,6 +19,14 @@ set :application,     'webapp'
 set :user,            'rails'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
+
+set :rbenv_type, :user # or :system, depends on your rbenv setup
+set :rbenv_ruby, '2.5.0'
+
+set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
+#set :rbenv_map_bins, %w{rake gem bundle ruby rails}
+set :rbenv_map_bins, %w{rake gem bundle ruby rails puma pumactl}
+set :rbenv_roles, :all # default value
 
 # Don't change these unless you know what you're doing
 set :pty,             true
@@ -82,6 +89,7 @@ end
 
 task :cleanup do
 on roles(:app) do
+  execute "source ~/.bashrc"
   execute "env"
 end
 end
@@ -90,3 +98,12 @@ before :starting,     :check_revision
 after  :finishing,    :compile_assets
 after  :finishing,    :cleanup
 end
+
+
+
+
+
+
+
+
+
