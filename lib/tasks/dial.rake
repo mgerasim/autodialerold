@@ -24,21 +24,24 @@ namespace :dial do
         wc = `ps aux | grep -i "rake dial:run" | grep -v "grep" | wc -l`.split("\n")
         
         puts wc
-        
+	puts wc1
+       
         next if (wc == 2 and wc1 == 2)
         
         next if (setting.is_enabled != true)
         dir = setting.outgoing + '/'
         count = Dir[File.join(dir, '**', '*')].count { |file| File.file?(file) }
         j = count
-        
+	puts setting.callcount
+	puts count        
         next   if (count > setting.callcount)
         
         n = 0
-        
+       
+	puts 'contacts'
         Outgoing.limit(setting.callcount).each do |contact|
         
-                    
+            puts contact.telephone
             contact.delete
             
        
