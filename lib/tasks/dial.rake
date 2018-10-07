@@ -35,7 +35,7 @@ namespace :dial do
 	puts setting.callcount
 	puts count        
         next   if (count > setting.callcount)
-        
+       
         n = 0
        
 	puts 'contacts'
@@ -73,13 +73,14 @@ namespace :dial do
        File.open(Dir::Tmpname.create(['tmp_' + peers[i] + '_', '.call']) { }.to_s, "w+") do |f|
     	    f.puts("Channel: SIP/" + telephone +  "@" + peers[i])
             f.puts("Callerid: " + contact.id.to_s)
-            f.puts("Account: " + telephone)
+            f.puts("Account: " + contact.id.to_s)
             f.puts("MaxRetries: 0")
             f.puts("RetryTime: 20")
             f.puts("WaitTime: 5")
             f.puts("Context: outgoing")
             f.puts("Extension: s")
             f.puts("Priority: 1")
+            f.puts("Set: CDR(num)=" + telephone)
        
             f_path = f.path
        end
