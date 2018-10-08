@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'cdr/index'
+
   get 'help/outgoing_destroy_all'
 
   resources :outgoings
