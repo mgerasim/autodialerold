@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180312121504) do
+ActiveRecord::Schema.define(version: 20181101041439) do
 
   create_table "contacts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "phone"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20180312121504) do
     t.string "outgoing"
     t.integer "sleep"
     t.boolean "is_enabled"
+    t.integer "duration"
   end
 
   create_table "tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
