@@ -38,10 +38,9 @@ namespace :dial do
        
         n = 0
        
-	puts 'contacts'
         Outgoing.limit(setting.callcount).each do |contact|
-        
-            puts contact.telephone
+            
+#            puts "ID: " + contact.id.to_s
             contact.delete
             
        
