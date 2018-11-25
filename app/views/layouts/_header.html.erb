@@ -11,7 +11,10 @@
     		<%= link_to "Исходящие", outgoings_path %>
     	    </li>
  	    <li>
-		<%= link_to "Статистика", cdr_index_path %>
+		<%= link_to "Выгрузить статистику", {:controller => :help, :action => :cdr} %>
+	    </li>
+	    <li>
+		<%= link_to "Очистить статистику", {:controller => :help, :action => :cdr_clear} %>
 	    </li>
 	    <li>
 	       <%= link_to "Настройки", edit_setting_path(Setting.first) %>
