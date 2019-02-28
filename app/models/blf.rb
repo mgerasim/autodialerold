@@ -1,0 +1,2 @@
+class Blf < ApplicationRecord
+end

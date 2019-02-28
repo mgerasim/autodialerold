@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Статистика</h1>
+
+<table class="table table-bordered">
+
+  <tbody>
+    <tr>
+      <th>Количество регистраций</th>
+      <td><%= Blf.count %></td>
+    </tr>
+    <tr>
+      <th>Свободно операторов</th>
+      <td><%= Blf.where(:status => "hangup").count %></td>
+    </tr>
+    <tr>
+       <th>Предпологаемое количество СПС</th>
+       <td><%= @sps %></td>
+    </tr>
+  </tbody>
+
+</table>
+
+<h1>Регистрации</h1>
+
+<table class="table tabled-bordered">
+  <thead>
+    <tr>
+      <th>Uid</th>
+      <th>Status</th>
+      <th>Direction</th>
+      <th>Other leg</th>
+      <th>Other leg domain</th>
+      <th>Rank</th>
+      <th>Uuid</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @blves.each do |blf| %>
+      <tr>
+        <td><%= blf.uid %></td>
+        <td><%= blf.status %></td>
+        <td><%= blf.direction %></td>
+        <td><%= blf.other_leg %></td>
+        <td><%= blf.other_leg_domain %></td>
+        <td><%= blf.rank %></td>
+        <td><%= blf.uuid %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

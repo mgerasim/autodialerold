@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uid: 1
+  status: MyString
+  direction: MyString
+  other_leg: MyString
+  other_leg_domain: MyString
+  rank: 
+  uuid: MyString
+
+two:
+  uid: 1
+  status: MyString
+  direction: MyString
+  other_leg: MyString
+  other_leg_domain: MyString
+  rank: 
+  uuid: MyString

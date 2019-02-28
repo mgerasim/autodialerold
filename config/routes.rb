@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  get "help/blves"
+
+  resources :blves
   get 'cdr/index'
 
   get 'help/outgoing_destroy_all'

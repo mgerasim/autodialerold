@@ -1,4 +1,7 @@
 class HelpController < ApplicationController
+
+  skip_before_action :require_login, :only => [:blves]
+
   def cdr
     send_file(
         "/var/log/asterisk/cdr-csv/Master.csv",
@@ -21,4 +24,36 @@ class HelpController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def blves
+    uid = params[:uid]
+    status = params[:status]
+    direction = params[:direction]
+    other_leg = params[:other_leg]
+    other_leg_domain = params[:other_leg_domain]
+    rank = params[:rank]
+    uuid = params[:uuid]
+
+    
+
+    blf = Blf.where(:uid => uid).first
+    if (blf == nil)
+       blf = Blf.new
+    end
+
+    if (uid.to_i < 1000 and status != "unregistered")
+      blf.uid = uid
+      blf.status = status
+      blf.direction = direction
+      blf.other_leg = other_leg
+      blf.other_leg_domain = other_leg_domain
+      blf.rank = rank
+      blf.uuid = uuid
+
+      blf.save
+    end
+
+    render :layout => false
+  end
+
 end

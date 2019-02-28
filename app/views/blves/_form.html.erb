@@ -1,0 +1,52 @@
+<%= form_with(model: blf, local: true) do |form| %>
+  <% if blf.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(blf.errors.count, "error") %> prohibited this blf from being saved:</h2>
+
+      <ul>
+      <% blf.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :uid %>
+    <%= form.number_field :uid, id: :blf_uid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.text_field :status, id: :blf_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :direction %>
+    <%= form.text_field :direction, id: :blf_direction %>
+  </div>
+
+  <div class="field">
+    <%= form.label :other_leg %>
+    <%= form.text_field :other_leg, id: :blf_other_leg %>
+  </div>
+
+  <div class="field">
+    <%= form.label :other_leg_domain %>
+    <%= form.text_field :other_leg_domain, id: :blf_other_leg_domain %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rank %>
+    <%= form.text_field :rank, id: :blf_rank %>
+  </div>
+
+  <div class="field">
+    <%= form.label :uuid %>
+    <%= form.text_field :uuid, id: :blf_uuid %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

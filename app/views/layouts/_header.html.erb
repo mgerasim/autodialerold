@@ -16,6 +16,9 @@
 	    <li>
 		<%= link_to "Очистить статистику", {:controller => :help, :action => :cdr_clear} %>
 	    </li>
+            <li>
+                  <%= link_to "Регистрации", blves_path %>
+	    </li>
 	    <li>
 	       <%= link_to "Настройки", edit_setting_path(Setting.first) %>
 	    </li>
