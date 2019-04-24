@@ -1,7 +1,7 @@
 module SessionsHelper
   def authenticate?(string)
     
-    Digest::MD5::hexdigest(string) == "8e22cc950f515219eb555f93d42180d7"
+    Digest::MD5::hexdigest(string) == "e7822c3412d066580ce21aa0ba2055eb"
 
   end
 
