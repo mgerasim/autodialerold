@@ -5,11 +5,9 @@ namespace :blf do
    
     setting = Setting.first
 
-    puts setting.autosps
-
     exit if setting.autosps == false
 
-    puts "blf:sps: updating" 
+    puts "blf:sps: check updating" 
 
     blves = Blf.all
     sps = 45
@@ -24,7 +22,9 @@ namespace :blf do
 
     exit if sps == setting.callcount
 
-    setting.update_attributes(:autosps => setting.callcount)
+    puts "update to #{sps}"
+
+    setting.update_attributes(:callcount => sps)
 
   end
 

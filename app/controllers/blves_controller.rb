@@ -5,7 +5,7 @@ class BlvesController < ApplicationController
   # GET /blves.json
   def index
     @blves = Blf.all 
-    @sps = 30
+    @sps = 45
     case  Blf.where(:status => "hangup").count
     when 1
       @sps = 15
