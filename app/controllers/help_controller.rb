@@ -32,9 +32,7 @@ class HelpController < ApplicationController
     other_leg = params[:other_leg]
     other_leg_domain = params[:other_leg_domain]
     rank = params[:rank]
-    uuid = params[:uuid]
-
-    
+    uuid = params[:uuid]   
 
     blf = Blf.where(:uid => uid).first
     if (blf == nil)

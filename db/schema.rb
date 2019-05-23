@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190228063655) do
+ActiveRecord::Schema.define(version: 20190523120120) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "contact"
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 20190228063655) do
     t.integer "google_private_key_file_size"
     t.datetime "google_private_key_updated_at"
     t.text "title"
+    t.boolean "autosps"
   end
 
   create_table "spools", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
