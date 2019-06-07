@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190523120120) do
+ActiveRecord::Schema.define(version: 20190607111837) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "contact"
@@ -25,6 +25,12 @@ ActiveRecord::Schema.define(version: 20190523120120) do
     t.string "other_leg"
     t.string "other_leg_domain"
     t.string "rank"
+    t.string "uuid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "channels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "uuid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

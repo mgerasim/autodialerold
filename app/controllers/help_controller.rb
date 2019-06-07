@@ -1,6 +1,6 @@
 class HelpController < ApplicationController
 
-  skip_before_action :require_login, :only => [:blves]
+  skip_before_action :require_login, :only => [:blves, :channel_add, :channel_del]
 
   def cdr
     send_file(
@@ -23,6 +23,20 @@ class HelpController < ApplicationController
       format.html { redirect_to outgoings_url, notice: 'Outgoing was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def channel_add
+    uuid = params[:uuid]
+    Channel.create(:uuid => uuid)
+    render :layout => false
+  end
+
+  def channel_del
+    uuid = params[:uuid]
+    Channel.where(:uuid => uuid).each do |channel| 
+      channel.delete
+    end
+    render :layout => false
   end
 
   def blves

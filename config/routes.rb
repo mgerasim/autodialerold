@@ -30,5 +30,6 @@ Rails.application.routes.draw do
   get 'outgoings/destroy_all'
   get 'help/cdr'
   get 'help/cdr_clear'
-
+  get 'help/channel_add'
+  get 'help/channel_del'
 end
