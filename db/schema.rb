@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190607111837) do
+ActiveRecord::Schema.define(version: 20190630080223) do
 
   create_table "answers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string "contact"
@@ -113,6 +113,15 @@ ActiveRecord::Schema.define(version: 20190607111837) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["outgoing_id"], name: "index_spools_on_outgoing_id"
+  end
+
+  create_table "statsps", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.integer "countreg"
+    t.integer "freeoper"
+    t.integer "newsps"
+    t.integer "abonqueue"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tasks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|

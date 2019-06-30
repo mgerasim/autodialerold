@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Statsps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Countreg</th>
+      <th>Freeoper</th>
+      <th>Newsps</th>
+      <th>Abonqueue</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @statsps.each do |statsp| %>
+      <tr>
+        <td><%= statsp.countreg %></td>
+        <td><%= statsp.freeoper %></td>
+        <td><%= statsp.newsps %></td>
+        <td><%= statsp.abonqueue %></td>
+        <td><%= link_to 'Show', statsp %></td>
+        <td><%= link_to 'Edit', edit_statsp_path(statsp) %></td>
+        <td><%= link_to 'Destroy', statsp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Statsp', new_statsp_path %>

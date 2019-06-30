@@ -57,3 +57,28 @@
 
 <br>
 
+<h1>Статистика</h1>
+
+<table class="table tabled-bordered">
+  <thead>
+    <tr>
+      <th>Дата</th>
+      <th>Количество регистарций</th>
+      <th>Свободно операторов</th>
+      <th>Предпологаемое количество СПС</th>
+      <th>Количество абонентов в очереди</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% Statsp.all.each do |stat| %>
+      <tr>
+        <td><%= stat.created_at %></td>
+        <td><%= stat.countreg %></td>
+        <td><%= stat.freeoper %></td>
+        <td><%= stat.newsps %></td>
+        <td><%= stat.abonqueue %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

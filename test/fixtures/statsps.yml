@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  countreg: 1
+  freeoper: 1
+  newsps: 1
+  abonqueue: 1
+
+two:
+  countreg: 1
+  freeoper: 1
+  newsps: 1
+  abonqueue: 1

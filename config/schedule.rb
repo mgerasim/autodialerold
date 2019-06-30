@@ -26,6 +26,10 @@ every :minute do
 end
 
 every :minute do
+  rake "blf:stat"
+end
+
+every :minute do
   rake "blf:sps"
 end
 

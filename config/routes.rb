@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :statsps
   get "help/blves"
 
   resources :blves

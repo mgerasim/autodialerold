@@ -1,0 +1,2 @@
+module StatspsHelper
+end
