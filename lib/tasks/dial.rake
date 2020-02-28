@@ -70,6 +70,7 @@ namespace :dial do
         puts telephone
    
        File.open(Dir::Tmpname.create(['tmp_' + peers[i] + '_', '.call']) { }.to_s, "w+") do |f|
+            f.chmod(0777)
     	    f.puts("Channel: PJSIP/" + telephone +  "@" + peers[i])
             f.puts("Callerid: " + contact.id.to_s)
 #           f.puts("Account: " + contact.id.to_s)
