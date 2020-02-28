@@ -52,8 +52,8 @@ namespace :dial do
             peers_str = setting.sipnames
        
             peers = peers_str.split('|')
-       
-            i = n % peers.count
+      
+            i = contact.id % peers.count
     
 	    telephone = contact.telephone.gsub(/[^0-9A-Za-z]/, '').gsub(/\r\n?/, "\n").gsub(/\W/, '') 
     
@@ -70,7 +70,7 @@ namespace :dial do
         puts telephone
    
        File.open(Dir::Tmpname.create(['tmp_' + peers[i] + '_', '.call']) { }.to_s, "w+") do |f|
-    	    f.puts("Channel: PJSIP/" + telephone +  "@" + peers[i])
+    	    f.puts("Channel: SIP/" + telephone +  "@" + peers[i])
             f.puts("Callerid: " + contact.id.to_s)
 #           f.puts("Account: " + contact.id.to_s)
             f.puts("Account: " + telephone)
