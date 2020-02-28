@@ -1,7 +1,7 @@
 # Change these
-server 'localhost', roles: [:web, :app, :db], primary: true
+server 'localhost:25010', roles: [:web, :app, :db], primary: true
 
-set  :repo_url,        'file:///home/rails/repos/autodialer.git'
+set  :repo_url,        'file:///home/rails/repos/autodialerold.git'
 
 #set :scm, :none
 #set :repository, "."
@@ -15,7 +15,7 @@ set  :repo_url,        'file:///home/rails/repos/autodialer.git'
 #set :branch, "master"
 
 
-set :application,     'autodialer'
+set :application,     'autodialerold'
 set :user,            'rails'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
