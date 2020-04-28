@@ -1,5 +1,5 @@
 # Change these
-server 'localhost:25010', roles: [:web, :app, :db], primary: true
+server '176.99.7.149:25010', roles: [:web, :app, :db], primary: true
 
 set  :repo_url,        'file:///home/rails/repos/autodialerold.git'
 
