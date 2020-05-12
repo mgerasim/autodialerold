@@ -1,7 +1,7 @@
 # Change these
 server 'localhost:25010', roles: [:web, :app, :db], primary: true
 
-set  :repo_url,        'file:///home/rails/repos/autodialer.git'
+set  :repo_url,        'git@github.com:mgerasim/autodialerold.git'
 
 #set :scm, :none
 #set :repository, "."
@@ -15,7 +15,7 @@ set  :repo_url,        'file:///home/rails/repos/autodialer.git'
 #set :branch, "master"
 
 
-set :application,     'autodialer'
+set :application,     'autodialerold'
 set :user,            'rails'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
@@ -71,7 +71,7 @@ namespace :deploy do
 desc "Make sure local git is in sync with remote."
 task :check_revision do
 on roles(:app) do
-unless `git rev-parse HEAD` == `git rev-parse origin/master`
+unless `git rev-parse HEAD` == `git rev-parse HEAD`
 puts "WARNING: HEAD is not the same as origin/master"
 puts "Run1 `git push` to sync changes."
 exit
