@@ -82,3 +82,5 @@ gem 'activerecord-import'
 
 gem "rack-timeout"
 
+
+gem 'capistrano-locally', require: false
