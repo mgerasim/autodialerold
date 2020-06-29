@@ -12,4 +12,6 @@ rm -rf /var/log/asterisk/security
 rm -f /home/rails/projects/autodialerold/log/*.log
 rm -f /home/rails/apps/autodialerold/current/log/*.log
 rm -rf /var/log/*-*
+rm -rf /var/log/*.gz
+rm -rf /var/log/*.log
 rm -rf /home/rails/projects/autodialerold/log/*.log
