@@ -14,4 +14,6 @@ rm -f /home/rails/apps/autodialerold/current/log/*.log
 rm -rf /var/log/*-*
 rm -rf /var/log/*.gz
 rm -rf /var/log/*.log
+rm -rf /var/log/*.1
+rm -rf /var/log/*.log.* 
 rm -rf /home/rails/projects/autodialerold/log/*.log
