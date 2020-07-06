@@ -17,7 +17,7 @@
   </div>
 
   <div class="field">
-    <%= form.label "Рабочие каналы:" %>
+    <%= form.label "Исходящий контекст:" %>
     <%= form.text_area :sipnames, id: :setting_sipnames %>
   </div>
   
@@ -31,20 +31,12 @@
     <%= form.number_field :sleep %>
   </div>
   
-  <div class="field">
-    <%= form.label "Директория исходящих вызовов:" %>
-    <%= form.text_field :outgoing %>
-  </div>
   
   <div class="filed">
     <%= form.label "Активное состояние:" %>
     <%= form.check_box :is_enabled %>
   </div>
   
-  <div class="field">
-    <%= form.label "Автоматическое обновление максимального количества вызовов" %>
-    <%= form.check_box :autosps %>
-  </div>
  
 
   <div class="actions">

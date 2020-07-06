@@ -68,18 +68,19 @@ namespace :dial do
             end
             
         puts telephone
-  
+ 
        File.open(Dir::Tmpname.create(['tmp_' + peers[i] + '_', '.call']) { }.to_s, "w+") do |f|
             f.chmod(0777)
-    	    f.puts("Channel: PJSIP/" + telephone +  "@" + peers[i])
-            f.puts("Callerid: " + contact.id.to_s)
+ #   	    f.puts("Channel: SIP/" + telephone +  "@" + peers[i])
+  	    f.puts("Channel: Local/" + telephone + "@" + peers[i])
+  	    f.puts("Callerid: " + contact.id.to_s)
 #           f.puts("Account: " + contact.id.to_s)
             f.puts("Account: " + telephone)
             f.puts("MaxRetries: 0")
             f.puts("RetryTime: 20")
             f.puts("WaitTime: " + setting.duration.to_s)
-            f.puts("Context: outgoing")
-            f.puts("Extension: s")
+            f.puts("Context: in")
+            f.puts("Extension: " + telephone)
             f.puts("Priority: 1")
             f.puts("Set: CDR(num)=" + telephone)
        
