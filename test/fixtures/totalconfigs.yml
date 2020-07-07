@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title_setting_trunk: MyString
+  text: MyString
+  title_app: MyString
+  text: MyString
+  template_channel: MyString
+  text: MyString
+
+two:
+  title_setting_trunk: MyString
+  text: MyString
+  title_app: MyString
+  text: MyString
+  template_channel: MyString
+  text: MyString

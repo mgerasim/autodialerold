@@ -20,6 +20,11 @@
     <%= form.label "Исходящий контекст:" %>
     <%= form.text_area :sipnames, id: :setting_sipnames %>
   </div>
+
+  <div class="field">
+    <%= form.label "Входящий контекст:" %>
+    <%= form.text_field :incoming_context, id: :setting_incoming_context %>
+  </div>
   
   <div class="field">
     <%= form.label "Длительность вызова:" %>

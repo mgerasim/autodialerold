@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Totalconfigs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title setting trunk</th>
+      <th>Text</th>
+      <th>Title app</th>
+      <th>Text</th>
+      <th>Template channel</th>
+      <th>Text</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @totalconfigs.each do |totalconfig| %>
+      <tr>
+        <td><%= totalconfig.title_setting_trunk %></td>
+        <td><%= totalconfig.text %></td>
+        <td><%= totalconfig.title_app %></td>
+        <td><%= totalconfig.text %></td>
+        <td><%= totalconfig.template_channel %></td>
+        <td><%= totalconfig.text %></td>
+        <td><%= link_to 'Show', totalconfig %></td>
+        <td><%= link_to 'Edit', edit_totalconfig_path(totalconfig) %></td>
+        <td><%= link_to 'Destroy', totalconfig, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Totalconfig', new_totalconfig_path %>

@@ -1,0 +1,2 @@
+module TotalconfigsHelper
+end

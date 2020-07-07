@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_28_223227) do
+ActiveRecord::Schema.define(version: 2020_07_07_103218) do
 
   create_table "analyses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "employee_active_count"
@@ -205,6 +205,7 @@ ActiveRecord::Schema.define(version: 2020_01_28_223227) do
     t.boolean "is_support_amd"
     t.integer "duration"
     t.boolean "autosps"
+    t.string "incoming_context"
   end
 
   create_table "sipaccounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -241,6 +242,15 @@ ActiveRecord::Schema.define(version: 2020_01_28_223227) do
 
   create_table "test", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "a"
+  end
+
+  create_table "totalconfigs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title_setting_trunk"
+    t.string "text"
+    t.string "title_app"
+    t.string "template_channel"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tranks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

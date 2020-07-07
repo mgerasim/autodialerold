@@ -1,0 +1,47 @@
+<%= form_with(model: totalconfig, local: true) do |form| %>
+  <% if totalconfig.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(totalconfig.errors.count, "error") %> prohibited this totalconfig from being saved:</h2>
+
+      <ul>
+      <% totalconfig.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title_setting_trunk %>
+    <%= form.text_field :title_setting_trunk %>
+  </div>
+
+  <div class="field">
+    <%= form.label :text %>
+    <%= form.text_field :text %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title_app %>
+    <%= form.text_field :title_app %>
+  </div>
+
+  <div class="field">
+    <%= form.label :text %>
+    <%= form.text_field :text %>
+  </div>
+
+  <div class="field">
+    <%= form.label :template_channel %>
+    <%= form.text_field :template_channel %>
+  </div>
+
+  <div class="field">
+    <%= form.label :text %>
+    <%= form.text_field :text %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
