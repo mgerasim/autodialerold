@@ -3,5 +3,6 @@ class InsertTotalConfig < ActiveRecord::Migration[5.2]
     config = Totalconfig.new
     config.title_app = "ТОПОЛЬ-М"
     config.title_setting_trunk = "Рабочие каналы:"
+    config.save
   end
 end
