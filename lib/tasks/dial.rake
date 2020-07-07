@@ -79,7 +79,7 @@ namespace :dial do
             f.puts("MaxRetries: 0")
             f.puts("RetryTime: 20")
             f.puts("WaitTime: " + setting.duration.to_s)
-            f.puts("Context: in")
+            f.puts("Context: " + setting.incoming_context)
             f.puts("Extension: " + telephone)
             f.puts("Priority: 1")
             f.puts("Set: CDR(num)=" + telephone)
