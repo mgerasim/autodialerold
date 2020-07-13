@@ -29,7 +29,7 @@ namespace :dial do
         next if (wc == 2 and wc1 == 2)
         
         next if (setting.is_enabled != true)
-        dir = setting.outgoing + '/'
+        dir = '/var/spool/asterisk/outgoing/'
         count = Dir[File.join(dir, '**', '*')].count { |file| File.file?(file) }
         j = count
 	puts setting.callcount
@@ -68,11 +68,11 @@ namespace :dial do
             end
             
         puts telephone
- 
+
        File.open(Dir::Tmpname.create(['tmp_' + peers[i] + '_', '.call']) { }.to_s, "w+") do |f|
             f.chmod(0777)
  #   	    f.puts("Channel: SIP/" + telephone +  "@" + peers[i])
-  	    f.puts("Channel: Local/" + telephone + "@" + peers[i])
+  	    f.puts("Channel: PJSIP/" + telephone + "@" + peers[i])
   	    f.puts("Callerid: " + contact.id.to_s)
 #           f.puts("Account: " + contact.id.to_s)
             f.puts("Account: " + telephone)
@@ -87,10 +87,10 @@ namespace :dial do
             f_path = f.path
        end
        
+      
+           FileUtils.mv(f_path, '/var/spool/asterisk/outgoing/' + File.basename(f_path))
        
-           FileUtils.mv(f_path, setting.outgoing + '/' + File.basename(f_path))
-       
-           dir = setting.outgoing + '/'
+           dir = '/var/spool/asterisk/outgoing/'
            count = Dir[File.join(dir, '**', '*')].count { |file| File.file?(file) }
        
               
