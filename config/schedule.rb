@@ -25,13 +25,6 @@ every :minute do
   rake "dial:run"
 end
 
-every :minute do
-  rake "blf:stat"
-end
-
-every :minute do
-  rake "blf:sps"
-end
 
 every 1.day, at: '4:30 am' do
   rake "dial:clear"
