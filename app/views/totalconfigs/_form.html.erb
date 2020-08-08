@@ -26,6 +26,12 @@
     <%= form.text_field :template_channel %>
   </div>
 
+
+  <div class="filed">
+    <%= form.label "Случайный порядок выбора транка:" %>
+    <%= form.check_box :is_random_peer %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

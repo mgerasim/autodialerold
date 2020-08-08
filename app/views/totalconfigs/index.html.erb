@@ -8,6 +8,7 @@
       <th>Title setting trunk</th>
       <th>Title app</th>
       <th>Template channel</th>
+      <th>Is Random Peer</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,7 +19,8 @@
         <td><%= totalconfig.title_setting_trunk %></td>
         <td><%= totalconfig.title_app %></td>
         <td><%= totalconfig.template_channel %></td>
-        <td><%= link_to 'Show', totalconfig %></td>
+        <td><%= totalconfig.is_random_peer %></td>
+	<td><%= link_to 'Show', totalconfig %></td>
         <td><%= link_to 'Edit', edit_totalconfig_path(totalconfig) %></td>
         <td><%= link_to 'Destroy', totalconfig, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

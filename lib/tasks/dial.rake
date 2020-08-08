@@ -14,7 +14,9 @@ namespace :dial do
     
     setting = Setting.first
     total = (60 / setting.sleep).floor
-    
+   
+    totalconfig = Totalconfig.first
+
     for t in 0..total 
         
        puts Time.now.strftime("    %F %T")
@@ -72,8 +74,8 @@ namespace :dial do
        File.open(Dir::Tmpname.create(['tmp_' + peers[i] + '_', '.call']) { }.to_s, "w+") do |f|
             f.chmod(0777)
  #   	    f.puts("Channel: SIP/" + telephone +  "@" + peers[i])
-  	    f.puts("Channel: PJSIP/" + telephone + "@" + peers[i])
-  	    f.puts("Callerid: " + contact.id.to_s)
+	    f.puts("Channel: " + totalconfig.template_channel + "/" + telephone + "@" + peers[i])
+  	    f.puts("Callerid: " + peers[i])
 #           f.puts("Account: " + contact.id.to_s)
             f.puts("Account: " + telephone)
             f.puts("MaxRetries: 0")

@@ -69,6 +69,6 @@ class TotalconfigsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def totalconfig_params
-      params.require(:totalconfig).permit(:title_setting_trunk, :title_app, :template_channel)
+      params.require(:totalconfig).permit(:is_random_peer, :title_setting_trunk, :title_app, :template_channel)
     end
 end
