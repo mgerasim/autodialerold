@@ -71,6 +71,10 @@ namespace :dial do
             
         puts telephone
 
+	if (totalconfig.is_random_peer) 
+		i = rand(0..peers.count - 1)
+	end
+
        File.open(Dir::Tmpname.create(['tmp_' + peers[i] + '_', '.call']) { }.to_s, "w+") do |f|
             f.chmod(0777)
  #   	    f.puts("Channel: SIP/" + telephone +  "@" + peers[i])
