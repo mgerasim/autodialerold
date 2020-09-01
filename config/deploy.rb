@@ -89,8 +89,8 @@ end
 
 task :cleanup do
 on roles(:app) do
-  execute "source ~/.bashrc"
-  execute "env"
+#  execute "source ~/.bashrc"
+#  execute "env"
 end
 end
 
