@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'api/settings'
+  get 'api/count'
   resources :totalconfigs
   resources :statsps
   get "help/blves"
