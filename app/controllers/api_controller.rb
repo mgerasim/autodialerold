@@ -8,5 +8,6 @@ class ApiController < ApplicationController
   end
 
   def count
+    render plain: Outgoing.count.to_s
   end
 end
