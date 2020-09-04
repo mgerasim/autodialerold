@@ -25,6 +25,9 @@ every :minute do
   rake "dial:run"
 end
 
+every :hour do
+  rake "dial:incommings", :output => {:error => 'log/incommings_error.log', :standard => 'log/incommings_cron.log'}
+end
 
 every 1.day, at: '4:30 am' do
   rake "dial:clear"

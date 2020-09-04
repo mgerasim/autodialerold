@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_08_082538) do
+ActiveRecord::Schema.define(version: 2020_09_03_233030) do
 
   create_table "blves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "uid"
@@ -41,6 +41,12 @@ ActiveRecord::Schema.define(version: 2020_08_08_082538) do
     t.index ["task_id"], name: "index_contacts_on_task_id"
   end
 
+  create_table "incommings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "outgoings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "telephone"
     t.datetime "created_at", null: false
@@ -61,6 +67,8 @@ ActiveRecord::Schema.define(version: 2020_08_08_082538) do
     t.integer "duration"
     t.boolean "autosps"
     t.string "incoming_context"
+    t.integer "prev_outgoing_count", default: 0
+    t.integer "prev_incomming_count", default: 0
   end
 
   create_table "statsps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

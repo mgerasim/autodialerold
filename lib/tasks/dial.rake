@@ -6,6 +6,17 @@ namespace :dial do
   end
   
   desc "TODO"
+  task incommings: :environment do
+    setting = Setting.first
+    setting.prev_outgoing_count = setting.prev_outgoing_count - Outgoing.count
+    setting.prev_incomming_count = Incomming.count
+    setting.save
+    Incomming.where('created_at <= ?', 1.hour.ago.to_datetime) do |incomming| 
+      incomming.delete
+    end 
+  end
+
+  desc "TODO"
   task run: :environment do
   
     puts Time.now.strftime("  %F %T")
