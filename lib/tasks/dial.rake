@@ -9,7 +9,7 @@ namespace :dial do
   task incommings: :environment do
     setting = Setting.first
     setting.prev_outgoing_count = setting.prev_outgoing_count - Outgoing.count
-    setting.prev_incomming_count = Incomming.count
+    setting.prev_incomming_count = Asteriskcdr.where("calldate > ? AND dcontext='in'", 8.hour.ago.to_datetime).count
     setting.save
     Incomming.where('created_at <= ?', 1.hour.ago.to_datetime) do |incomming| 
       incomming.delete

@@ -1,7 +1,8 @@
 # Change these
 server 'localhost', roles: [:web, :app, :db], primary: true
 
-set  :repo_url,        'git@github.com:mgerasim/autodialerold.git'
+#set  :repo_url,        'git@github.com:mgerasim/autodialerold.git'
+set  :repo_url,        'https://mgerasim:HcZhkfDd7i@github.com/mgerasim/autodialerold.git'
 
 #set :scm, :none
 #set :repository, "."
