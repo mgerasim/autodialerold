@@ -8,8 +8,8 @@ namespace :dial do
   desc "TODO"
   task incommings: :environment do
     setting = Setting.first
-    setting.prev_outgoing_count = setting.prev_outgoing_count - Outgoing.count
-    setting.prev_incomming_count = Asteriskcdr.where("calldate > ? AND dcontext='in'", 1.hour.ago.to_datetime).count
+    setting.prev_outgoing_count = Asteriskcdr.where("calldate > ? AND dcontext like '%in%'", 1.hour.ago.to_datetime).count
+    setting.prev_incomming_count = Asteriskcdr.where("calldate > ? AND dcontext like '%out%'", 1.hour.ago.to_datetime).count
     setting.save
     Incomming.where('created_at <= ?', 1.hour.ago.to_datetime) do |incomming| 
       incomming.delete
