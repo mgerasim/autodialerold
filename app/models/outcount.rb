@@ -1,0 +1,2 @@
+class Outcount < ApplicationRecord
+end

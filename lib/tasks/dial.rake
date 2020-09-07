@@ -9,12 +9,14 @@ namespace :dial do
   task incommings: :environment do
     setting = Setting.first
     
-    setting.update_attributes(:prev_outgoing_count => setting.current_outgoing_count)
-    setting.update_attributes(:current_outgoing_count => 0)
+    setting.update_attributes(:prev_outgoing_count => Outcount.where("created_at > ?", 1.hour.ago.to_datetime).sum(:count))
     setting.update_attributes(:prev_incomming_count => Asteriskcdr.where("calldate > ? AND dcontext like '%in%'", 1.hour.ago.to_datetime).count)
 
     Incomming.where('created_at <= ?', 1.hour.ago.to_datetime) do |incomming| 
       incomming.delete
+    end 
+    Outcount.where('created_at <= ?', 2.hour.ago.to_datetime) do |out| 
+      out.delete
     end 
   end
 
@@ -110,8 +112,7 @@ namespace :dial do
             end
         end
         
-        setting.current_outgoing_count = setting.current_outgoing_count + n
-        setting.update_attributes(:current_outgoing_count => setting.current_outgoing_count)
+        Outcount.create(:count => n) if n > 0
 
     end
     
