@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2020_09_07_031612) do
     t.string "incoming_context"
     t.integer "prev_outgoing_count", default: 0
     t.integer "prev_incomming_count", default: 0
-    t.integer "current_outgoing_count"
+    t.integer "current_outgoing_count", default: 0
   end
 
   create_table "statsps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
