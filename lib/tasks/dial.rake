@@ -11,7 +11,7 @@ namespace :dial do
     
     setting.update_attributes(:prev_outgoing_count => Outcount.where("created_at > ?", 1.hour.ago.to_datetime).sum(:count))
     setting.update_attributes(:prev_incomming_count => Asteriskcdr.where("calldate > ? AND dcontext like '%in%'", 1.hour.ago.to_datetime).count)
-
+      
     Incomming.where('created_at <= ?', 1.hour.ago.to_datetime) do |incomming| 
       incomming.delete
     end 
