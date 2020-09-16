@@ -106,10 +106,10 @@ namespace :dial do
             count = Dir[File.join(dir, '**', '*')].count { |file| File.file?(file) }
        
               
-            if (j > setting.callcount)
-              j = 0
-              next
-            end
+            #if (j > setting.callcount)
+            #  j = 0
+            #  next
+            #end
         end
         
         Outcount.create(:count => n) if n > 0
