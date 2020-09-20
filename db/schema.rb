@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_07_104256) do
+ActiveRecord::Schema.define(version: 2020_09_20_224839) do
 
   create_table "blves", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "uid"
@@ -76,6 +76,9 @@ ActiveRecord::Schema.define(version: 2020_09_07_104256) do
     t.integer "prev_outgoing_count", default: 0
     t.integer "prev_incomming_count", default: 0
     t.integer "current_outgoing_count", default: 0
+    t.integer "outgoing_count_24h", default: 0
+    t.integer "ingoing_count_24h", default: 0
+    t.integer "version", default: 1
   end
 
   create_table "statsps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

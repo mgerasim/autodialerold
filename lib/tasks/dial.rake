@@ -11,11 +11,14 @@ namespace :dial do
     
     setting.update_attributes(:prev_outgoing_count => Outcount.where("created_at > ?", 1.hour.ago.to_datetime).sum(:count))
     setting.update_attributes(:prev_incomming_count => Asteriskcdr.where("calldate > ? AND dcontext like '%in%'", 1.hour.ago.to_datetime).count)
+
+    setting.update_attributes(:outgoing_count_24h => Outcount.where("created_at > ?", 24.hour.ago.to_datetime).sum(:count))
+    setting.update_attributes(:ingoing_count_24h => Asteriskcdr.where("calldate > ? AND dcontext like '%in%'", 24.hour.ago.to_datetime).count)
       
-    Incomming.where('created_at <= ?', 1.hour.ago.to_datetime) do |incomming| 
+    Incomming.where('created_at <= ?', 25.hour.ago.to_datetime) do |incomming| 
       incomming.delete
     end 
-    Outcount.where('created_at <= ?', 2.hour.ago.to_datetime) do |out| 
+    Outcount.where('created_at <= ?', 25.hour.ago.to_datetime) do |out| 
       out.delete
     end 
   end
