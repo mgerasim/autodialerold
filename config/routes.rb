@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'api/version'
   get 'api/start'
   get 'api/stop'
+  post 'api/upload'
   resources :totalconfigs
   resources :statsps
   get "help/blves"

@@ -2,6 +2,8 @@ class ApiController < ApplicationController
 
   skip_before_action :require_login
 
+  protect_from_forgery with: :null_session
+
   def settings
     setting = Setting.first    
     render :json => setting
@@ -26,6 +28,19 @@ class ApiController < ApplicationController
     setting = Setting.first
     setting.is_enabled = false;
     setting.save
+    render plain: ""
+  end
+
+  def upload
+
+    file = params[:name_of_file_param]
+
+    upload = "LOAD DATA LOCAL INFILE '" + file.tempfile.path + "' INTO TABLE outgoings (telephone) SET date_created = CURRENT_TIMESTAMP, status = 'INSERTED';"
+
+        results = ActiveRecord::Base.connection.execute(upload)
+
+        Rails.logger.error results
+
     render plain: ""
   end
 
