@@ -44,4 +44,10 @@ class ApiController < ApplicationController
     render plain: ""
   end
 
+  def clear
+    sql = "DELETE FROM outgoings;"		
+    results = ActiveRecord::Base.connection.execute( sql )  
+    render plain: ""  
+  end
+
 end
