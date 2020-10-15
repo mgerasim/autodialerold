@@ -84,3 +84,5 @@ gem "rack-timeout"
 
 
 gem 'capistrano-locally', require: false
+
+gem 'telegram-bot'
