@@ -117,8 +117,9 @@ namespace :dial do
 
             File.open(Dir::Tmpname.create(['tmp_' + peers[i] + '_', '.call']) { }.to_s, "w+") do |f|
               f.chmod(0777)
-        	    f.puts("Channel: " + template_channel + "/" + telephone + "@" + peers[i])
-  	          f.puts("Callerid: " + peers[i])
+#              f.puts("Channel: " + template_channel + "/" + telephone + "@" + peers[i])
+  	      f.puts("Channel: " + template_channel + "/" + telephone + "@" + peers[i])
+	      f.puts("Callerid: " + peers[i])
               f.puts("Account: " + telephone)
               f.puts("MaxRetries: 0")
               f.puts("RetryTime: 20")

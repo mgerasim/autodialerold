@@ -1,3 +1,6 @@
+
+require 'telegram/bot'
+
 class ApiController < ApplicationController
 
   skip_before_action :require_login
@@ -33,15 +36,26 @@ class ApiController < ApplicationController
 
   def upload
 
-    file = params[:name_of_file_param]
+    client = Telegram::Bot::Client.new("980059077:AAGCsCWK0TsJiCa739mS8KJn0p645QxmxV8", "username")
 
-    upload = "LOAD DATA LOCAL INFILE '" + file.tempfile.path + "' INTO TABLE outgoings (telephone) SET date_created = CURRENT_TIMESTAMP, status = 'INSERTED';"
+    begin
+      
+      text = 'ОБЗВОН: Загрузка файла на сервер ' + request.host 
+      client.send_message(chat_id: -1001309981363, text: text)
 
-        results = ActiveRecord::Base.connection.execute(upload)
-
-        Rails.logger.error results
-
-    render plain: ""
+      file = params[:name_of_file_param]
+      upload = "LOAD DATA LOCAL INFILE '" + file.tempfile.path + "' INTO TABLE outgoings (telephone) SET date_created = CURRENT_TIMESTAMP, status = 'INSERTED';"
+      results = ActiveRecord::Base.connection.execute(upload)
+      text = 'ОБЗВОН: Загрузка файла на сервер ' + request.host + ' прошла успешна'
+      client.send_message(chat_id: -1001309981363, text: text)
+      render plain: ""
+    rescue Exception => error
+      logger.debug(error)
+      text = 'ОБЗВОН: Ошибка при загрузки на сервер ' + request.host + ': ' + error.to_s
+      client.send_message(chat_id: -1001309981363, text: text)
+      render plain: "", status: 500, message: error.to_s 
+    end
+    
   end
 
   def clear
