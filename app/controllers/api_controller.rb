@@ -41,13 +41,13 @@ class ApiController < ApplicationController
     begin
       
       text = 'ОБЗВОН: Загрузка файла на сервер ' + request.host 
-      client.send_message(chat_id: -1001309981363, text: text)
+#      client.send_message(chat_id: -1001309981363, text: text)
 
       file = params[:name_of_file_param]
       upload = "LOAD DATA LOCAL INFILE '" + file.tempfile.path + "' INTO TABLE outgoings (telephone) SET date_created = CURRENT_TIMESTAMP, status = 'INSERTED';"
       results = ActiveRecord::Base.connection.execute(upload)
       text = 'ОБЗВОН: Загрузка файла на сервер ' + request.host + ' прошла успешна'
-      client.send_message(chat_id: -1001309981363, text: text)
+ #     client.send_message(chat_id: -1001309981363, text: text)
       render plain: ""
     rescue Exception => error
       logger.debug(error)

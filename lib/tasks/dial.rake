@@ -1,4 +1,7 @@
 namespace :dial do
+ 
+  pid_file = "/tmp/#{ENV['RAILS_ENV']}_dial_run.pid"
+       
   desc "TODO"
   task clear: :environment do
     `rm -rf /var/log/asterisk/cdr-csv/`
@@ -25,18 +28,46 @@ namespace :dial do
 
   desc "TODO"
   task run: :environment do
-  
+
+	  begin
+
+		  if File.exists? pid_file
+      pid = File.read(pid_file).to_i
+
+      begin
+        Process.getpgid( pid )
+        check_pid = true
+      rescue Errno::ESRCH
+        check_pid = false
+      end
+
+      File.delete(pid_file) if check_pid == false
+
+    end
+
+
+
+    if !File.exists? pid_file 
+
+    File.open(pid_file, 'w') { |f| f.puts Process.pid }
+
+    task_start_time = Time.now
+
     puts Time.now.strftime("  %F %T")
     
     wc1 = `ps aux | grep -i "rake dial:run" | grep -v "grep" | wc -l`.split("\n")
     
     setting = Setting.first
-    total = (59 / setting.sleep).floor
+    total = (40 / setting.sleep).floor
    
     totalconfig = Totalconfig.first
 
-    for t in 0..total 
-        
+#    for t in 0..total 
+loop do
+	setting = Setting.first
+
+	totalconfig = Totalconfig.first 
+      
        puts Time.now.strftime("    %F %T")
         
         sleep setting.sleep
@@ -54,7 +85,7 @@ namespace :dial do
         j = count
 	puts setting.callcount
 	puts count        
-        next   if (count > setting.callcount)
+#        next   if (count > setting.callcount)
        
         n = 0
        
@@ -119,8 +150,30 @@ namespace :dial do
         end
         
         Outcount.create(:count => n) if n > 0
+	
+   # end
+
+ #  rescue => error
+
+#	    File.delete(pid_file) if File.exist?(pid_file)
+
+#   end
+
+    end # for
+
+    task_end_time = Time.now
+
+    task_elapsed_seconds = task_end_time.to_i - task_start_time.to_i  # ((task_end_time - task_start_time) * 24 * 60 * 60).to_i
+
+    File.open('/tmp/task_end_time.sec', 'w') { |f| f.puts task_elapsed_seconds}
 
     end
+    rescue => error
+	    
+	    File.delete(pid_file) if File.exist?(pid_file)
+	    puts "Rescued: #{error.inspect}"
+    end
+
     
   end
 
