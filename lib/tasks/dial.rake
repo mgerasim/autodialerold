@@ -62,8 +62,12 @@ namespace :dial do
    
     totalconfig = Totalconfig.first
 
-    for t in 0..total 
-        
+#    for t in 0..total 
+loop do
+	setting = Setting.first
+
+	totalconfig = Totalconfig.first 
+      
        puts Time.now.strftime("    %F %T")
         
         sleep setting.sleep
