@@ -119,7 +119,7 @@ loop do
               template_channel = totalconfig.template_channel
             end
 
-            File.open(Dir::Tmpname.create(['tmp_' + peers[i] + '_', '.call']) { }.to_s, "w+") do |f|
+            File.open(Dir::Tmpname.create(['tmp_' + peers[i] + '_', '.call'], '/var/spool/asterisk/tmp') { }.to_s, "w+") do |f|
               f.chmod(0777)
 #              f.puts("Channel: " + template_channel + "/" + telephone + "@" + peers[i])
   	      f.puts("Channel: " + template_channel + "/" + telephone + "@" + peers[i])
@@ -128,9 +128,11 @@ loop do
               f.puts("MaxRetries: 0")
               f.puts("RetryTime: 20")
               f.puts("WaitTime: " + setting.duration.to_s)
-	            f.puts("Context: " + setting.incoming_context) if setting.incoming_context != nil
-              f.puts("Extension: " + telephone)
-              f.puts("Priority: 1")
+	      f.puts("Context: NO_CONTEXT")
+              f.puts("Extension:s")
+              f.puts("Priority:1")
+	      f.puts("AlwaysDelete:Yes")
+              f.puts("Archive:No")
               f.puts("Set: CDR(num)=" + telephone)
        
               f_path = f.path
