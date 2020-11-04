@@ -58,7 +58,7 @@ namespace :dial do
     wc1 = `ps aux | grep -i "rake dial:run" | grep -v "grep" | wc -l`.split("\n")
     
     setting = Setting.first
-    total = (59 / setting.sleep).floor
+    total = (40 / setting.sleep).floor
    
     totalconfig = Totalconfig.first
 
@@ -81,7 +81,7 @@ namespace :dial do
         j = count
 	puts setting.callcount
 	puts count        
-        next   if (count > setting.callcount)
+#        next   if (count > setting.callcount)
        
         n = 0
        
