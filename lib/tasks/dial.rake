@@ -7,7 +7,13 @@ namespace :dial do
     `rm -rf /var/log/asterisk/cdr-csv/`
     `mkdir /var/log/asterisk/cdr-csv/`
   end
- 
+
+  desc "Stop dial"
+  task stop: :environment do
+    Process.kill(9, File.read(pid_file).to_i)  if File.exist?(pid_file)
+    File.delete(pid_file) if File.exist?(pid_file)
+  end
+
   desc "TODO"
   task incommings: :environment do
     setting = Setting.first
@@ -124,7 +130,7 @@ loop do
 #              f.puts("Channel: " + template_channel + "/" + telephone + "@" + peers[i])
   	      f.puts("Channel: " + template_channel + "/" + telephone + "@" + peers[i])
 	      f.puts("Callerid: " + peers[i])
-              f.puts("Account: " + telephone)
+   #          f.puts("Account: " + telephone)
               f.puts("MaxRetries: 0")
               f.puts("RetryTime: 20")
               f.puts("WaitTime: " + setting.duration.to_s)
@@ -133,8 +139,9 @@ loop do
               f.puts("Priority:1")
 	      f.puts("AlwaysDelete:Yes")
               f.puts("Archive:No")
-              f.puts("Set: CDR(num)=" + telephone)
-       
+ #             f.puts("Set: CDR(num)=" + telephone)
+ 	      f.puts("Setvar: __WAITTIME=" + setting.duration.to_s)
+
               f_path = f.path
             end
             FileUtils.mv(f_path, '/var/spool/asterisk/outgoing/' + File.basename(f_path))
