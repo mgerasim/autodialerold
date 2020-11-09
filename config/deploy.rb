@@ -15,6 +15,7 @@ set  :repo_url,        'https://mgerasim:HcZhkfDd7i@github.com/mgerasim/autodial
 #set :local_repository, "."
 #set :branch, "master"
 
+set :format, 	 :pretty
 
 set :application,     'autodialerold'
 set :user,            'rails'
