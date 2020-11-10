@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'api/start'
   get 'api/stop'
   get 'api/clear'
+  get 'api/phone_count'
   post 'api/upload'
   resources :totalconfigs
   resources :statsps

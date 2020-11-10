@@ -34,6 +34,14 @@ class ApiController < ApplicationController
     render plain: ""
   end
 
+  def phone_count
+
+    setting = Setting.first
+    setting.callcount = params[:phone_count];
+    setting.save
+    render plain: ""
+  end
+
   def upload
 
     client = Telegram::Bot::Client.new("980059077:AAGCsCWK0TsJiCa739mS8KJn0p645QxmxV8", "username")
