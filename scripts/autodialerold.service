@@ -1,0 +1,15 @@
+[Unit]
+Description=Autodialer Old Appl
+
+[Service]
+WorkingDirectory=/home/rails/projects/autodialerold
+ExecStart=/bin/bash -l -c 'cd /home/rails/projects/autodialerold && RAILS_ENV=production bundle exec rake dial:run --silent >> log/cron_log.log 2>&1'
+Restart=always
+# Restart service after 10 seconds if the dotnet service crashes:
+RestartSec=10
+KillSignal=SIGINT
+SyslogIdentifier=autodialerold-app
+User=rails
+
+[Install]
+WantedBy=multi-user.target
